@@ -1,4 +1,4 @@
-#Icremental and unique ticket generator
+# Incremental and unique ticket generator
 
 A fun task at Pando.
 
@@ -10,6 +10,7 @@ The payload should have two parameters *projectName* and *ticketTitle* . Hence a
         ticketTitle: "bugfix",
         projectName: "PANDO"
 }
+```
 
 For each project independent ticket number for each title are issued incrementally. The response would be
 ```{
@@ -18,3 +19,4 @@ For each project independent ticket number for each title are issued incremental
          ticketId: 1
      }
 }
+```
