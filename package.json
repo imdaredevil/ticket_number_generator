@@ -1,0 +1,24 @@
+{
+  "name": "ticket_number_generator",
+  "version": "1.0.0",
+  "description": "a fun app",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imdaredevil/ticket_number_generator.git"
+  },
+  "author": "cibi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imdaredevil/ticket_number_generator/issues"
+  },
+  "homepage": "https://github.com/imdaredevil/ticket_number_generator#readme",
+  "dependencies": {
+    "bull": "^3.16.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.27"
+  }
+}

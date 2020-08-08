@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  redis:
+    image: redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - /Users/imdaredevil/source/ticketgen/docker/data/redis:/data
+  
+  mongodb:
+    image: mongo:3.6.1
+    container_name: mongodb2
+    volumes:
+      - /Users/imdaredevil/source/ticketgen/docker/data/mongodb:/data/db
+      - /Users/imdaredevil/source/ticketgen/docker/config:/data/configdb
+    ports:
+        - 27017:27017
+    command: mongod

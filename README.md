@@ -22,3 +22,8 @@ For each project independent ticket number for each title are issued incremental
      }
 }
 ```
+
+To run the script
+```
+npm run start
+```
