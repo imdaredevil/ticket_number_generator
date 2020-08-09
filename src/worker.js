@@ -38,7 +38,7 @@ requestQueue.on('failed',(job,error) => {
         }
         response.status(500);
         response.json({
-            errors: [error]
+            error: error.message
         });
     }
     catch(err){
@@ -61,9 +61,9 @@ async function addProject(projectName)
             if(!projects[projectName])
                 projects[projectName] = new Ticket(projectName,0);
             requestQueue.process(projectName,1,async (job) => {
-                    projects[projectName].number += 1;
-                    await projects[projectName].save();
-                    return projects[projectName].number;
+                projects[projectName].number += 1;
+                await projects[projectName].save();
+                return projects[projectName].number;
             });
         }
     }
@@ -87,7 +87,7 @@ async function addRequest(projectName,data,res)
         console.error(err);
         res.status(500);
         res.json({
-            error: err,
+            error: err.message,
         });
     }
 }
