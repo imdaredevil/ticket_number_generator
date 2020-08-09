@@ -1,24 +1,34 @@
 const { addRequest } = require('./worker');
+const { validatePayload } = require('./validator');
 
-function validateData(data){
-    return data && data.data && data.data.title && data.data.projectName;
-}
 
 async function generateTicketNumber(req,res,next){
-    let data = req.body;
-    if(validateData(data))
+    try
     {
-        data = data.data;
+    let data = req.body;
+    const { error: validationError, value: validatedPayload } = validatePayload(data);
+    if(!validationError)
+    {
+        data = validatedPayload.data;
        await addRequest(data.projectName,{
             title: data.title
         },res);
-
     }
     else
     {
-        console.log(data);
+        console.error(validationError);
+        res.status(400);
         res.json({
-            error: "payload is not proper"
+            error: validationError
+        });
+    }
+    }
+    catch(err)
+    {
+        console.error(err);
+        res.status(500);
+        res.json({
+            error: err
         });
     }
 }
